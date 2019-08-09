@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css?family=Darker+Grotesque|Poiret+One&display=swap');
+
+$primary-color: #FBF9FA;
+$secondary-color:#FD0054;
+$text-color: #2B2024;
+$font-family-monospace: 'Poiret One';
+
+@mixin flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body {
+  font-family: $font-family-monospace;
+  padding: 20px 40px;
+}
+
+button {
+  font-family: $font-family-monospace;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
