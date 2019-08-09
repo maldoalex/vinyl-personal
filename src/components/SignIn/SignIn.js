@@ -1,5 +1,5 @@
 import React from "react";
-
+import axios from "axios";
 import CustomButton from "../CustomButton/CustomButton";
 
 import "./SignIn.scss";
@@ -12,6 +12,16 @@ class SignIn extends React.Component {
       email: "",
       password: ""
     };
+  }
+
+  signIn() {
+    const { email, password } = this.state;
+    axios
+      .post("/auth/login", { email, password })
+      .then(() => {
+        this.setState({ email: "", password: "" });
+      })
+      .catch(err => alert(err.response.request.response));
   }
 
   handleSubmit = event => {
@@ -39,8 +49,6 @@ class SignIn extends React.Component {
             type="email"
             handleChange={this.handleChange}
             value={this.state.email}
-            label="email"
-            required
           />
           <input
             name="password"
@@ -48,8 +56,6 @@ class SignIn extends React.Component {
             type="password"
             value={this.state.password}
             handleChange={this.handleChange}
-            label="password"
-            required
           />
           <CustomButton type="submit"> Sign in </CustomButton>
         </form>

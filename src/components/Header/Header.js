@@ -1,9 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import CartIcon from "../CartIcon/CartIcon";
+import CartSlide from "../CartSlide/CartSlide";
 
 import "./Header.scss";
 
-const Header = () => (
+const Header = ({ hidden }) => (
   <div className="header">
     <Link className="logo-container" to="/">
       <img
@@ -12,11 +15,11 @@ const Header = () => (
       />
     </Link>
     <div className="navs">
-      <Link className="nav" to="/shop">
-        SHOP
+      <Link className="nav" to="/library">
+        LIBRARY
       </Link>
       <Link className="nav" to="/shop">
-        CONTACT
+        RENT
       </Link>
       {/* {currentUser ? (
         <div className="option" onClick={() => auth.signOut()}>
@@ -27,8 +30,14 @@ const Header = () => (
         SIGN IN
       </Link>
       {/* )} */}
+      <CartIcon />
     </div>
+    {hidden ? null : <CartSlide />}
   </div>
 );
 
-export default Header;
+const mapStateToProps = ({ cart: { hidden } }) => ({
+  hidden
+});
+
+export default connect(mapStateToProps)(Header);

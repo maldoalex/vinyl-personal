@@ -15,7 +15,7 @@ class Directory extends React.Component {
             "https://www.recordsonwalls.com/wp-content/uploads/2013/08/17_record_frames_on_walls.jpg",
           size: "large",
           id: 1,
-          link: "shop"
+          link: "library"
         },
         {
           title: "about",

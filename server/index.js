@@ -4,7 +4,7 @@ const app = express();
 const controller = require("./controller");
 const massive = require("massive");
 const session = require("express-session");
-const authCtrl = require("./authController");
+const authController = require("./authController");
 const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env;
 
 app.use(express.json());
@@ -31,9 +31,9 @@ app.post("/api/hardware/", controller.addHardware);
 // app.delete("/api/hardware/:id", controller.deleteHardware);
 
 // //users
-app.post("/auth/register", authCtrl.register);
-app.post("/auth/login", authCtrl.login);
-app.get("/auth/logout", authCtrl.logout);
+app.post("/auth/register", authController.register);
+app.post("/auth/signIn", authController.signIn);
+app.get("/auth/signOut", authController.signOut);
 
 // app.get("/api/users", controller.getAllUsers);
 // app.post("/api/users/", controller.addUser);

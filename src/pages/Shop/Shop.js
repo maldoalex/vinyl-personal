@@ -29,9 +29,10 @@ class ShopPage extends React.Component {
         {collections.map(item => (
           <CollectionItem
             key={item.id}
-            product_name={item.product_name}
-            product_price={item.product_price}
-            product_image={item.product_image}
+            item={item}
+            // product_name={item.product_name}
+            // product_price={item.product_price}
+            // product_image={item.product_image}
           />
         ))}
       </div>

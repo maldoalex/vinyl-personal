@@ -2,15 +2,19 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import { BrowserRouter } from "react-router-dom";
+// import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import { Provider } from "react-redux";
+import store from "./redux/store";
 import * as serviceWorker from "./serviceWorker";
 
+//The <Provider /> makes the Redux store available to any nested components that have been wrapped in the connect() function.
+//(https://stackoverflow.com/questions/51974369/hashrouter-vs-browserrouter)
 ReactDOM.render(
-  <Provider>
-    <BrowserRouter>
+  <Provider store={store}>
+    <HashRouter>
       <App />
-    </BrowserRouter>
+    </HashRouter>
   </Provider>,
   document.getElementById("root")
 );
