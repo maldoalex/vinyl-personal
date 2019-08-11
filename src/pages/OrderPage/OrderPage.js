@@ -1,16 +1,21 @@
 import React from "react";
-// import { connect } from "react-redux";
-
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+import CheckoutItem from "../../components/CheckoutItem/CheckoutItem";
+import {
+  selectCartItems,
+  selectCartTotal
+} from "../../redux/Cart/cart.selectors";
 import "./OrderPage.scss";
 
 const OrderPage = ({ cartItems, total }) => (
   <div className="order-page">
     <div className="order-header">
       <div className="header-block">
-        <span>Item</span>
+        <span>Product</span>
       </div>
       <div className="header-block">
-        <span>Description</span>
+        <span>Name</span>
       </div>
       <div className="header-block">
         <span>Quantity</span>
@@ -22,17 +27,17 @@ const OrderPage = ({ cartItems, total }) => (
         <span>Remove</span>
       </div>
     </div>
-    {/* {cartItems.map(cartItem => (
+    {cartItems.map(cartItem => (
       <CheckoutItem key={cartItem.id} cartItem={cartItem} />
-    ))} */}
-    {/* <div className="total">TOTAL: ${total}</div> */}
+    ))}
+    <div className="total">TOTAL: ${total}</div>
   </div>
 );
 
-// const mapStateToProps = createStructuredSelector({
-//   cartItems: selectCartItems,
-//   total: selectCartTotal
-// });
+const mapStateToProps = createStructuredSelector({
+  cartItems: selectCartItems,
+  total: selectCartTotal
+});
 
-// export default connect(mapStateToProps)(OrderPage);
-export default OrderPage;
+export default connect(mapStateToProps)(OrderPage);
+// export default OrderPage;

@@ -11,19 +11,19 @@ const CartIcon = ({ toggleCartHidden, cartCount }) => (
       src="https://cdn.pixabay.com/photo/2017/11/06/15/52/blank-vinyl-record-jacket-2924018_960_720.jpg"
       alt="record sleeve"
     />
-    <span className="item-count">{cartCount}</span>
+    <span className="cart-count">{cartCount}</span>
   </div>
 );
 
-// const mapStateToProps = state => ({
-//   cartCount: cartCountSelector(state)
-// })
+const mapStateToProps = ({ cart: { cartItems } }) => ({
+  cartCount: cartItems.reduce((total, cartItem) => total + cartItem.quantity, 0)
+});
 
 const mapDispatchToProps = dispatch => ({
   toggleCartHidden: () => dispatch(toggleCartHidden())
 });
 
 export default connect(
-  undefined,
+  mapStateToProps,
   mapDispatchToProps
 )(CartIcon);

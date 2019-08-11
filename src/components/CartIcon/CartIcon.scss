@@ -8,11 +8,12 @@
  cursor: pointer;
 
  .shopping-icon {
-  width: 24px;
-  height: 24px;
+  width: 30px;
+  height: 30px;
+  background: white;
  }
 
- .item-count {
+ .cart-count {
   position: absolute;
   font-size: 10px;
   font-weight: bold;
