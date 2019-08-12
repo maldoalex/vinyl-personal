@@ -47,8 +47,9 @@ module.exports = {
     req.session.user = { id: user.id, email: user.email };
     return res.json(req.session.user);
   },
-  signOut: (req, res) => {
-    req.session.destroy();
+  logout: (req, res) => {
+    req.session.user.destroy();
+    // req.session.cart.destroy();
     return res.sendStatus(200);
   }
 };

@@ -12,14 +12,17 @@ class LogIn extends React.Component {
       email: "",
       password: ""
     };
+    this.login = this.login.bind(this);
   }
 
   //use axios to get data from users table
   login() {
     const { email, password } = this.state;
+    console.log("hit");
     axios
       .post("/auth/login", { email, password })
       .then(() => {
+        console.log("logged in");
         this.setState({ email: "", password: "" });
       })
       .catch(err => alert(err.response.request.response));
@@ -27,7 +30,7 @@ class LogIn extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-
+    this.login();
     this.setState({ email: "", password: "" });
   };
 
@@ -49,7 +52,7 @@ class LogIn extends React.Component {
             name="email"
             placeholder="email"
             type="email"
-            handleChange={this.handleChange}
+            onChange={this.handleChange}
             value={this.state.email}
           />
           <input
@@ -57,9 +60,12 @@ class LogIn extends React.Component {
             placeholder="password"
             type="password"
             value={this.state.password}
-            handleChange={this.handleChange}
+            onChange={this.handleChange}
           />
-          <CustomButton type="submit"> Log in </CustomButton>
+          <CustomButton onClick={this.handleSubmit} type="submit">
+            {" "}
+            Log in{" "}
+          </CustomButton>
         </form>
       </div>
     );

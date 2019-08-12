@@ -6,8 +6,9 @@ import CartSlide from "../CartSlide/CartSlide";
 
 import "./Header.scss";
 
-const Header = ({ hidden }) => (
+const Header = props => (
   <div className="header">
+    {console.log(props)}
     <Link className="logo-container" to="/">
       <img
         src="https://images.vexels.com/media/users/3/158737/isolated/preview/3353b3a06bc810221952cccbbb189b47-record-rarity-vinyl-illustration-by-vexels.png"
@@ -35,12 +36,12 @@ const Header = ({ hidden }) => (
       {/* )} */}
       <CartIcon />
     </div>
-    {hidden ? null : <CartSlide />}
+    {props.hidden ? null : <CartSlide />}
   </div>
 );
 
-const mapStateToProps = ({ cart: { hidden } }) => ({
-  hidden
-});
+const mapStateToProps = reduxState => {
+  return { hidden: reduxState.cart.hidden };
+};
 
 export default connect(mapStateToProps)(Header);

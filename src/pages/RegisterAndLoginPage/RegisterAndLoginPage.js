@@ -1,5 +1,5 @@
 import React from "react";
-
+import LogOut from "../../components/LogOut/LogOut";
 import LogIn from "../../components/Login/LogIn";
 import Register from "../../components/Register/Register";
 
@@ -10,6 +10,7 @@ const RegisterAndLoginPage = () => (
   <div className="reg-login">
     <LogIn />
     <Register />
+    <LogOut />
   </div>
 );
 

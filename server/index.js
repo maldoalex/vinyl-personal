@@ -5,6 +5,7 @@ const controller = require("./controller");
 const massive = require("massive");
 const session = require("express-session");
 const authController = require("./authController");
+const cartController = require("./cartController");
 const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env;
 
 app.use(express.json());
@@ -23,6 +24,7 @@ app.use(
     secret: SESSION_SECRET
   })
 );
+app.use(cartController.checkForCart);
 
 //hardware
 app.get("/api/hardware", controller.getAllHardware);
@@ -33,12 +35,12 @@ app.post("/api/hardware/", controller.addHardware);
 // //users
 app.post("/auth/register", authController.register);
 app.post("/auth/login", authController.login);
-app.get("/auth/signOut", authController.signOut);
+app.get("/auth/logout", authController.logout);
 
-// app.get("/api/users", controller.getAllUsers);
-// app.post("/api/users/", controller.addUser);
-// app.delete("/api/users/:id", controller.deleteUser);
-// app.put("/api/users/:id", controller.updateUser);
+//cart
+app.get("/api/cart", cartController.getCart);
+app.post("/api/cart", cartController.addToCart);
+app.delete("/api/cart/:id", cartController.removeFromCart);
 
 // //orders
 // app.get("/api/orders/:id", controller.getOrder);
