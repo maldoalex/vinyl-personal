@@ -1,8 +1,8 @@
 import React from "react";
 import axios from "axios";
-import LibraryItem from "../../components/LibraryItem/LibraryItem";
+import CatalogItem from "../../components/CatalogItem/CatalogItem";
 
-class LibraryPage extends React.Component {
+class VinylCatalogPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -11,6 +11,7 @@ class LibraryPage extends React.Component {
     };
   }
 
+  //use axios to get data from api
   componentDidMount() {
     axios
       .get(
@@ -34,7 +35,7 @@ class LibraryPage extends React.Component {
     return (
       <div className="decades">
         {this.state.albums.map(album => (
-          <LibraryItem album={album} />
+          <CatalogItem album={album} />
         ))}
       </div>
     );
@@ -42,4 +43,4 @@ class LibraryPage extends React.Component {
   }
 }
 
-export default LibraryPage;
+export default VinylCatalogPage;

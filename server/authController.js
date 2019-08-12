@@ -30,7 +30,7 @@ module.exports = {
     return res.status(200).send(req.session.user);
   },
 
-  signIn: async (req, res) => {
+  login: async (req, res) => {
     const { email, password } = req.body;
     const matchUser = await req.app.get("db").get_user([email]);
     const user = matchUser[0];

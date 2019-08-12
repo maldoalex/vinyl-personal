@@ -2,9 +2,9 @@ import React from "react";
 import axios from "axios";
 import CustomButton from "../CustomButton/CustomButton";
 
-import "./SignIn.scss";
+import "./LogIn.scss";
 
-class SignIn extends React.Component {
+class LogIn extends React.Component {
   constructor(props) {
     super(props);
 
@@ -14,7 +14,8 @@ class SignIn extends React.Component {
     };
   }
 
-  signIn() {
+  //use axios to get data from users table
+  login() {
     const { email, password } = this.state;
     axios
       .post("/auth/login", { email, password })
@@ -36,9 +37,10 @@ class SignIn extends React.Component {
     this.setState({ [name]: value });
   };
 
+  //use form to capture input and set state on submit
   render() {
     return (
-      <div className="sign-in">
+      <div className="login">
         <h2>Account Holders</h2>
         <span>Sign in with email and password</span>
 
@@ -57,11 +59,11 @@ class SignIn extends React.Component {
             value={this.state.password}
             handleChange={this.handleChange}
           />
-          <CustomButton type="submit"> Sign in </CustomButton>
+          <CustomButton type="submit"> Log in </CustomButton>
         </form>
       </div>
     );
   }
 }
 
-export default SignIn;
+export default LogIn;

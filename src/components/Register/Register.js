@@ -1,9 +1,9 @@
 import React from "react";
 import CustomButton from "../CustomButton/CustomButton";
 import axios from "axios";
-import "./SignUp.scss";
+import "./Register.scss";
 
-class SignUp extends React.Component {
+class Register extends React.Component {
   constructor() {
     super();
 
@@ -16,6 +16,7 @@ class SignUp extends React.Component {
     };
   }
 
+  //use axios to place data in users table in respective columns
   register() {
     const { first_name, last_name, display_name, email, password } = this.state;
     axios
@@ -48,30 +49,19 @@ class SignUp extends React.Component {
       });
   }
 
-  // handleSubmit = async event => {
-  //   event.preventDefault();
-
-  //   const { password, confirmPassword } = this.state;
-
-  //   if (password !== confirmPassword) {
-  //     alert("passwords don't match");
-  //     return;
-  //   }
-  // };
-
   handleChange = event => {
     const { name, value } = event.target;
 
     this.setState({ [name]: value });
   };
-
+  //use key 'name' to set state for respective key
   render() {
     const { first_name, last_name, display_name, email, password } = this.state;
     return (
-      <div className="sign-up">
+      <div className="register">
         <h2 className="title">Create an account</h2>
         <span>Please fill out form</span>
-        <form className="sign-up-form" onSubmit={this.handleSubmit}>
+        <form className="register-form" onSubmit={this.handleSubmit}>
           <input
             placeholder="First Name"
             name="firstName"
@@ -107,13 +97,7 @@ class SignUp extends React.Component {
             value={password}
             onChange={this.handleChange}
           />
-          {/* <input
-            type="password"
-            name="confirm password"
-            placeholder="confirmPassword"
-            value={confirmPassword}
-            onChange={this.handleChange}
-          /> */}
+
           <CustomButton type="submit">Register</CustomButton>
         </form>
       </div>
@@ -121,4 +105,4 @@ class SignUp extends React.Component {
   }
 }
 
-export default SignUp;
+export default Register;

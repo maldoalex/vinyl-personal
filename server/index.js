@@ -32,7 +32,7 @@ app.post("/api/hardware/", controller.addHardware);
 
 // //users
 app.post("/auth/register", authController.register);
-app.post("/auth/signIn", authController.signIn);
+app.post("/auth/login", authController.login);
 app.get("/auth/signOut", authController.signOut);
 
 // app.get("/api/users", controller.getAllUsers);

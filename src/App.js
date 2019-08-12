@@ -1,10 +1,10 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import HomePage from "./pages/Homepage/Homepage";
-import ShopPage from "./pages/Shop/Shop";
-import SignInAndSignUpPage from "./pages/sign-in-and-sign-up/sign-in-and-sign-up";
+import InventoryPage from "./pages/InventoryPage/InventoryPage";
+import RegisterAndLoginPage from "./pages/RegisterAndLoginPage/RegisterAndLoginPage";
 import Header from "./components/Header/Header";
-import LibraryPage from "./pages/LibraryPage/Library";
+import VinylCatalogPage from "./pages/VinylCatalogPage/VinylCatalogPage";
 import OrderPage from "./pages/OrderPage/OrderPage";
 
 import "./App.scss";
@@ -17,9 +17,9 @@ class App extends React.Component {
         <Header />
         <Switch>
           <Route exact path="/" component={HomePage} />
-          <Route path="/library" component={LibraryPage} />
-          <Route path="/shop" component={ShopPage} />
-          <Route path="/signin" component={SignInAndSignUpPage} />
+          <Route path="/catalog" component={VinylCatalogPage} />
+          <Route path="/inventory" component={InventoryPage} />
+          <Route path="/login" component={RegisterAndLoginPage} />
           <Route exact path="/order" component={OrderPage} />
         </Switch>
       </div>

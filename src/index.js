@@ -5,7 +5,8 @@ import App from "./App";
 // import { BrowserRouter } from "react-router-dom";
 import { HashRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-import store from "./redux/store";
+import { PersistGate } from "redux-persist/integration/react";
+import { store, persistor } from "./redux/store";
 import * as serviceWorker from "./serviceWorker";
 
 //The <Provider /> makes the Redux store available to any nested components that have been wrapped in the connect() function.
@@ -13,7 +14,9 @@ import * as serviceWorker from "./serviceWorker";
 ReactDOM.render(
   <Provider store={store}>
     <HashRouter>
-      <App />
+      <PersistGate persistor={persistor}>
+        <App />
+      </PersistGate>
     </HashRouter>
   </Provider>,
   document.getElementById("root")

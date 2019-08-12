@@ -15,22 +15,22 @@ const Header = ({ hidden }) => (
       />
     </Link>
     <div className="navs">
-      <Link className="nav" to="/library">
-        LIBRARY
+      <Link className="nav" to="/catalog">
+        CATALOG
       </Link>
-      <Link className="nav" to="/shop">
+      <Link className="nav" to="/inventory">
         RENT
       </Link>
       <Link className="nav" to="/order">
-        ORDERS
+        CHECKOUT
       </Link>
       {/* {currentUser ? (
         <div className="option" onClick={() => auth.signOut()}>
           SIGN OUT
         </div>
       ) : ( */}
-      <Link className="option" to="/signin">
-        SIGN IN
+      <Link className="option" to="/login">
+        LOGIN
       </Link>
       {/* )} */}
       <CartIcon />
