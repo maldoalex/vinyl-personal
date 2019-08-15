@@ -44,12 +44,18 @@ module.exports = {
     if (!authenticate) {
       return res.status(403).send("incorrect password");
     }
-    req.session.user = { id: user.id, email: user.email };
+    req.session.user = { id: user.id, email: user.email, loggedIn: true };
     return res.json(req.session.user);
   },
   logout: (req, res) => {
-    req.session.user.destroy();
+    console.log("hit");
+    req.session.destroy();
     // req.session.cart.destroy();
+    // res.redirect("/login");
     return res.sendStatus(200);
+  },
+  getSession: (req, res) => {
+    const { user } = req.session;
+    user ? res.json(user) : res.sendStatus(403);
   }
 };

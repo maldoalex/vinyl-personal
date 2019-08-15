@@ -15,10 +15,10 @@ class VinylCatalogPage extends React.Component {
   componentDidMount() {
     axios
       .get(
-        "http://ws.audioscrobbler.com/2.0/?method=tag.gettopalbums&tag=1970s&limit=50&api_key=a524b0809a03f493e68a5abff436a312&format=json"
+        "http://ws.audioscrobbler.com/2.0/?method=tag.gettopalbums&tag=1960s&limit=50&api_key=a524b0809a03f493e68a5abff436a312&format=json"
       )
       .then(response => {
-        console.log(response.data.albums.album);
+        // console.log(response.data.albums.album);
         this.setState({
           albums: response.data.albums.album
         });
@@ -30,12 +30,12 @@ class VinylCatalogPage extends React.Component {
 
   render() {
     // let filteredAlbums = this.state.searchedAlbums.map(album => {
-    console.log(this.state.searchedAlbums);
+    // console.log(this.state.searchedAlbums);
 
     return (
       <div className="decades">
-        {this.state.albums.map(album => (
-          <CatalogItem album={album} />
+        {this.state.albums.map((album, i) => (
+          <CatalogItem album={album} key={i} />
         ))}
       </div>
     );

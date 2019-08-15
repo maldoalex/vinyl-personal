@@ -6,7 +6,6 @@ import CustomButton from "../CustomButton/CustomButton";
 import { toggleCartHidden, getCart } from "../../redux/Cart/cartReducer";
 import { store } from "../../redux/store";
 import "./CartSlide.scss";
-import axios from "axios";
 
 //create a cart component that slides in from right when icon is clicked
 //map through cart items and send to CartItem component
@@ -26,6 +25,7 @@ class CartSlide extends React.Component {
   }
   render() {
     const { history, cartItems } = this.props;
+    console.log(cartItems);
     return (
       <div className="cart-slide">
         {/* {console.log(props)} */}
@@ -36,8 +36,8 @@ class CartSlide extends React.Component {
         </div>
         <CustomButton
           onClick={() => {
-            history.push("/order");
             store.dispatch(toggleCartHidden());
+            history.push("/order");
           }}
         >
           Complete Order
@@ -47,28 +47,6 @@ class CartSlide extends React.Component {
   }
 }
 
-// const CartSlide = props => (
-//   <div className="cart-slide">
-//     {console.log(props)}
-//     <div className="cart-items">
-//       {props.cartItems.map(cartItem => (
-//         <CartItem key={cartItem.id} item={cartItem} />
-//       ))}
-//     </div>
-//     <CustomButton
-//       onClick={() => {
-//         props.history.push("/order");
-//         props.dispatch(toggleCartHidden());
-//       }}
-//     >
-//       Complete Order
-//     </CustomButton>
-//   </div>
-// );
-
-// const mapStateToProps = ({ cart: { cartItems } }) => ({
-//   cartItems
-// });
 const mapStateToProps = reduxState => {
   return { cartItems: reduxState.cart.cartItems };
 };

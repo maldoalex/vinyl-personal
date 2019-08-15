@@ -12,6 +12,7 @@ const REMOVE_ITEM = "REMOVE_ITEM";
 const GET_CART = "GET_CART";
 
 export function addItem(item) {
+  console.log(item);
   return {
     type: ADD_ITEM,
     payload: axios.post("/api/cart", { item }).then(res => res.data)
@@ -29,15 +30,6 @@ export function removeItem(id) {
   };
 }
 
-// export function getCart() {
-//   return {
-//     type: GET_CART,
-//     payload: axios
-//       .get("/api/cart")
-//       .then(res => res.data)
-//       .catch(err => console.log(err))
-//   };
-// }
 export const getCart = () => {
   let cartItems = axios.get("/api/cart").then(res => res.data);
   return {
@@ -52,27 +44,12 @@ export function toggleCartHidden() {
   };
 }
 
-// const addItemToCart = (cartItems, cartItemToAdd) => {
-//   const existingCartItem = cartItems.find(
-//     cartItem => cartItem.id === cartItemToAdd.id
-//   );
-
-//   if (existingCartItem) {
-//     return cartItems.map(cartItem =>
-//       cartItem.id === cartItemToAdd.id
-//         ? { ...cartItem, quantity: cartItem.quantity + 1 }
-//         : cartItem
-//     );
-//   }
-
-//   return [...cartItems, { ...cartItemToAdd, quantity: 1 }];
-// };
-
 export function cartReducer(state = INITIAL_STATE, action) {
   const { type, payload } = action;
 
   switch (type) {
     case `${ADD_ITEM}_FULFILLED`:
+      console.log(payload);
       return { ...state, cartItems: payload };
     case `${REMOVE_ITEM}_FULFILLED`:
       return { ...state, cartItems: payload };

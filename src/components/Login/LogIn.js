@@ -1,6 +1,9 @@
 import React from "react";
 import axios from "axios";
 import CustomButton from "../CustomButton/CustomButton";
+import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import { userLoggedIn } from "../../redux/user/userReducer";
 
 import "./LogIn.scss";
 
@@ -10,23 +13,35 @@ class LogIn extends React.Component {
 
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      authenticated: false
     };
     this.login = this.login.bind(this);
   }
 
+  // async componentDidMount() {
+  //   let res = await axios.get("/auth/user");
+  //   console.log(res);
+  //   if (res.data.loggedIn) this.setState({ authenticated: true });
+  //   this.props.userLoggedIn(res.data.loggedIn);
+  // }
+
   //use axios to get data from users table
-  login() {
+  async login(e) {
     const { email, password } = this.state;
-    console.log("hit");
-    axios
+    const res = await axios
       .post("/auth/login", { email, password })
-      .then(() => {
-        console.log("logged in");
-        this.setState({ email: "", password: "" });
-      })
-      .catch(err => alert(err.response.request.response));
+      .catch(err => console.log(err));
+    //check for true/false and store in redux
+    if (res.data.loggedIn) this.setState({ authenticated: true });
+    this.props.userLoggedIn(res.data.loggedIn);
+    // this.setState({ email: "", password: "" });
+    // alert(`welcome ${email}`);
   }
+
+  //set sesion received int o redux state
+
+  //show logout based on id
 
   handleSubmit = event => {
     event.preventDefault();
@@ -42,6 +57,9 @@ class LogIn extends React.Component {
 
   //use form to capture input and set state on submit
   render() {
+    if (this.props.loggedIn === true) {
+      return <Redirect to="/" />;
+    }
     return (
       <div className="login">
         <h2>Account Holders</h2>
@@ -72,4 +90,11 @@ class LogIn extends React.Component {
   }
 }
 
-export default LogIn;
+const mapStateToProps = reduxState => {
+  return { loggedIn: reduxState.user.loggedIn };
+};
+
+export default connect(
+  mapStateToProps,
+  { userLoggedIn }
+)(LogIn);

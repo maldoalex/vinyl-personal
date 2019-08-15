@@ -6,7 +6,16 @@ const massive = require("massive");
 const session = require("express-session");
 const authController = require("./authController");
 const cartController = require("./cartController");
-const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env;
+const orderController = require("./orderController");
+const {
+  SERVER_PORT,
+  CONNECTION_STRING,
+  SESSION_SECRET,
+  STRIPE_SECRET_KEY
+} = process.env;
+const stripe = require("stripe")(STRIPE_SECRET_KEY);
+
+app.use(require("body-parser").text());
 
 app.use(express.json());
 
@@ -36,19 +45,33 @@ app.post("/api/hardware/", controller.addHardware);
 app.post("/auth/register", authController.register);
 app.post("/auth/login", authController.login);
 app.get("/auth/logout", authController.logout);
+app.get("/auth/user", authController.getSession);
 
-//cart
+//Cart
 app.get("/api/cart", cartController.getCart);
 app.post("/api/cart", cartController.addToCart);
 app.delete("/api/cart/:id", cartController.removeFromCart);
 
 // //orders
 // app.get("/api/orders/:id", controller.getOrder);
-// app.post("/api/orders", controller.addOrder);
+app.post("/api/order", orderController.addOrder);
 // app.delete("/api/orders/:id", controller.deleteOrder);
 
-// //order detail
-// app.get("/api/order_detail/:id", controller.getOrderDetail);
+// stripe
+app.post("/api/charge", async (req, res) => {
+  try {
+    let { status } = await stripe.charges.create({
+      amount: 2000,
+      //make total dynamci
+      currency: "usd",
+      description: "An example charge",
+      source: req.body.orderToken
+    });
+    res.json({ status });
+  } catch (err) {
+    res.status(500).end();
+  }
+});
 
 app.listen(SERVER_PORT, () => {
   console.log(`server is listening port ${SERVER_PORT}`);

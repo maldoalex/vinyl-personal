@@ -7,21 +7,27 @@ class LogOut extends React.Component {
     super(props);
     this.state = {};
   }
-  logout() {
+  logout = () => {
+    console.log("hit");
     axios
       .get("/auth/logout")
       .then(res => {
         console.log(res);
       })
       .catch(err => console.log(err));
-  }
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+    this.logout();
+  };
 
   render() {
     return (
       <div className="logout">
-        <button type="submit" onClick={this.logout}>
+        <CustomButton type="submit" onClick={this.handleSubmit}>
           Logout
-        </button>
+        </CustomButton>
       </div>
     );
   }

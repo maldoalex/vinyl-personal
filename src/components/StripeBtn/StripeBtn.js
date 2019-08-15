@@ -1,5 +1,7 @@
 import React from "react";
 import StripeCheckout from "react-stripe-checkout";
+import orderReducer from "../../redux/Order/orderReducer";
+import axios from "axios";
 
 const StripeBtn = ({ price }) => {
   const priceToCents = price * 100;
@@ -7,7 +9,21 @@ const StripeBtn = ({ price }) => {
 
   const handleToken = token => {
     console.log(token);
-    alert("Payment Successful");
+    axios
+      .post("/api/charge", {
+        orderToken: token.id
+        //striptot
+      })
+      .then(res => {
+        alert("success");
+        //axios req
+        axios.post("/api/order", {
+          // body.users_id,
+          // hardware_id
+          //stripetotal
+        });
+      })
+      .catch(err => alert("payment unsuccessful"));
   };
 
   return (
