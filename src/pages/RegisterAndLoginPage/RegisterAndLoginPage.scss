@@ -1,7 +1,28 @@
-.reg-login {
- // width: 850px;
- display: flex;
- flex-direction: column;
- justify-content: space-between;
- margin: 30px auto;
+// .reg-login {
+//  // width: 850px;
+//  display: flex;
+//  flex-direction: column;
+//  justify-content: space-between;
+//  margin: 30px auto;
+//  background: black;
+// }
+
+
+
+
+
+.flip {
+ animation: flip 2s ease-out;
+}
+
+
+
+@keyframes flip {
+ 0% {
+  transform: rotateY(0deg);
+ }
+
+ 100% {
+  transform: rotateY(180deg);
+ }
 }

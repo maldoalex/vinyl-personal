@@ -30,9 +30,13 @@ class CartSlide extends React.Component {
       <div className="cart-slide">
         {/* {console.log(props)} */}
         <div className="cart-items">
-          {cartItems.map(cartItem => (
-            <CartItem key={cartItem.id} item={cartItem} />
-          ))}
+          {cartItems === undefined ? (
+            <div>Loading... </div>
+          ) : (
+            cartItems.map(cartItem => (
+              <CartItem key={cartItem.id} item={cartItem} />
+            ))
+          )}
         </div>
         <CustomButton
           onClick={() => {

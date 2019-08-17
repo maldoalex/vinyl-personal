@@ -1,26 +1,27 @@
 import React from "react";
 import StripeCheckout from "react-stripe-checkout";
-import orderReducer from "../../redux/Order/orderReducer";
+// import orderReducer from "../../redux/Order/orderReducer";
 import axios from "axios";
 
-const StripeBtn = ({ price }) => {
+const StripeBtn = ({ price, cartItems, userID }) => {
   const priceToCents = price * 100;
   const key = "pk_test_gAkv7yjUhrAWISKr9Js16Qbm00JUW1OxCd";
-
+  console.log(userID);
   const handleToken = token => {
-    console.log(token);
+    // console.log(token);
     axios
       .post("/api/charge", {
         orderToken: token.id
-        //striptot
       })
       .then(res => {
         alert("success");
-        //axios req
+        let idArray = cartItems.map(item => {
+          return item.id;
+        });
+        console.log(idArray);
         axios.post("/api/order", {
-          // body.users_id,
-          // hardware_id
-          //stripetotal
+          hardware_id: idArray.join(","),
+          user_id: userID
         });
       })
       .catch(err => alert("payment unsuccessful"));

@@ -3,12 +3,10 @@ import { connect } from "react-redux";
 // import CheckoutItem from "../../components/CheckoutItem/CheckoutItem";
 import CartItem from "../../components/CartItem/CartItem";
 import StripeBtn from "../../components/StripeBtn/StripeBtn";
-import StripeCheckoutForm from "../../components/StripeBtn/StripeCheckoutForm";
-import { Elements, StripeProvider } from "react-stripe-elements";
 
 import "./OrderPage.scss";
 
-const OrderPage = ({ cartItems, total }) => {
+const OrderPage = ({ cartItems, total, userID }) => {
   let stripeTotal = cartItems.reduce((total, cartItem) => {
     console.log(cartItem);
     return (total += Number(cartItem.product_price || 1));
@@ -22,9 +20,9 @@ const OrderPage = ({ cartItems, total }) => {
         <div className="header-block">
           <span>Name</span>
         </div>
-        <div className="header-block">
+        {/* <div className="header-block">
           <span>Quantity</span>
-        </div>
+        </div> */}
         <div className="header-block">
           <span>Price</span>
         </div>
@@ -37,14 +35,14 @@ const OrderPage = ({ cartItems, total }) => {
       ))}
       <div className="total">TOTAL: $ {stripeTotal}</div>
       {console.log(total)}
-      <StripeBtn price={stripeTotal} />
+      <StripeBtn price={stripeTotal} cartItems={cartItems} userID={userID} />
     </div>
   );
 };
 // {cartItems.reduce((total, cartItem) => total + Number(cartItem.price),0)}
 
 const mapStateToProps = reduxState => {
-  return { cartItems: reduxState.cart.cartItems };
+  return { cartItems: reduxState.cart.cartItems, userID: reduxState.user.id };
 };
 
 export default connect(mapStateToProps)(OrderPage);

@@ -6,6 +6,7 @@ import "./CartItem.scss";
 
 const CartItem = props => {
   //vinyl cart items
+  console.log(props);
   if (props.item.artist) {
     return (
       <div className="cart-item">
@@ -16,7 +17,7 @@ const CartItem = props => {
         </div>
         <div
           className="remove-button"
-          onClick={() => props.removeItem(props.cartItems)}
+          onClick={() => props.removeItem(props.item.name)}
         >
           &#10005;
         </div>

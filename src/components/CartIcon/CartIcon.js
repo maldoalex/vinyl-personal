@@ -7,8 +7,8 @@ import "./CartIcon.scss";
 const CartIcon = ({ toggleCartHidden, cartCount }) => (
   <div className="cart-icon" onClick={toggleCartHidden}>
     <img
-      className="shopping-icon"
-      src="https://cdn.pixabay.com/photo/2017/11/06/15/52/blank-vinyl-record-jacket-2924018_960_720.jpg"
+      className="crate-icon"
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHEW2Sz1Ykcx2JubMgROs7tmrSQh7uvgmpbTM8OsXGW7eOgqNn"
       alt="record sleeve"
     />
     <span className="cart-count">{cartCount}</span>
@@ -16,7 +16,7 @@ const CartIcon = ({ toggleCartHidden, cartCount }) => (
 );
 
 const mapStateToProps = ({ cart: { cartItems } }) => ({
-  cartCount: cartItems.reduce((total, cartItem) => total + cartItem.quantity, 0)
+  // cartCount: cartItems.reduce((total, cartItem) => total + cartItem.quantity, 0)
 });
 
 const mapDispatchToProps = dispatch => ({

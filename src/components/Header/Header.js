@@ -5,33 +5,28 @@ import CartIcon from "../CartIcon/CartIcon";
 import CartSlide from "../CartSlide/CartSlide";
 import axios from "axios";
 import { userLoggedIn, userLoggedOut } from "../../redux/user/userReducer";
-import CustomButton from "../CustomButton/CustomButton";
-
-import userReducer from "../../redux/user/userReducer";
-import Login from "../Login/LogIn";
-import Logout from "../LogOut/LogOut";
 
 import "./Header.scss";
 
 // const Header = props => (
 class Header extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
   async componentDidMount() {
     let res = await axios.get("/auth/user");
-    console.log(res);
+    // console.log(res);
     if (res.data.loggedIn) this.setState({ authenticated: true });
     this.props.userLoggedIn(res.data.loggedIn);
   }
 
   logout = () => {
-    console.log("hit");
+    // console.log("hit");
     axios
       .get("/auth/logout")
       .then(res => {
         this.props.userLoggedOut();
-        console.log(res);
+        // console.log(res);
       })
       .catch(err => console.log(err));
   };
@@ -63,18 +58,15 @@ class Header extends React.Component {
           </Link>
 
           {loggedIn ? (
-            <button onClick={this.handleSubmit}>Logout</button>
+            <div className="nav" onClick={this.handleSubmit}>
+              Logout
+            </div>
           ) : (
             <Link className="option" to="/login">
               {/* <Logout /> */}
               LOGIN
             </Link>
           )}
-
-          {/* <Link className="option" to="/login">
-        LOGIN
-      </Link> */}
-
           <CartIcon />
         </div>
         {hidden ? null : <CartSlide />}

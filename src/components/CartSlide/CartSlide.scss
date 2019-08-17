@@ -1,7 +1,7 @@
 .cart-slide {
- position: absolute;
+ position: fixed;
  width: 240px;
- height: 340px;
+ height: auto;
  display: flex;
  flex-direction: column;
  padding: 20px;
@@ -9,7 +9,7 @@
  background-color: #30648C;
  top: 130px;
  right: -240px;
-
+ overflow-x: auto;
  // right: 40px;
  z-index: 5;
  // -webkit-animation: slide 0.8s forwards;
@@ -30,10 +30,11 @@
  }
 
  .cart-items {
-  height: 240px;
+  // height: 240px;  
   display: flex;
   flex-direction: column;
-  // overflow: scroll;  background: brown;
+  overflow: scroll;
+  background: brown;
  }
 
  button {

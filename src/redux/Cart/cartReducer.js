@@ -46,7 +46,7 @@ export function toggleCartHidden() {
 
 export function cartReducer(state = INITIAL_STATE, action) {
   const { type, payload } = action;
-
+  console.log(action);
   switch (type) {
     case `${ADD_ITEM}_FULFILLED`:
       console.log(payload);
@@ -56,7 +56,7 @@ export function cartReducer(state = INITIAL_STATE, action) {
     case `${GET_CART}_PENDING`:
       return { ...state, loading: true };
     case `${GET_CART}_FULFILLED`:
-      return { ...state, cartItems: payload };
+      return { ...state, cartItems: payload.cart };
     case TOGGLE_CART_HIDDEN:
       return { ...state, hidden: !state.hidden };
     default:

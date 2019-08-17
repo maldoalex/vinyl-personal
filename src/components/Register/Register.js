@@ -81,15 +81,15 @@ class Register extends React.Component {
             placeholder="First Name"
             name="first_name"
             type="text"
-            onChange={this.handleChange}
             value={first_name}
+            onChange={this.handleChange}
           />
           <input
             placeholder="Last Name"
             name="last_name"
             type="text"
-            onChange={this.handlChange}
             value={last_name}
+            onChange={this.handlChange}
           />
           <input
             type="text"

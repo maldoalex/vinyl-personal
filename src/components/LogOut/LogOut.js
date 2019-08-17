@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import CustomButton from "../CustomButton/CustomButton";
+// import CustomButton from "../CustomButton/CustomButton";
 
 class LogOut extends React.Component {
   constructor(props) {
@@ -25,9 +25,9 @@ class LogOut extends React.Component {
   render() {
     return (
       <div className="logout">
-        <CustomButton type="submit" onClick={this.handleSubmit}>
-          Logout
-        </CustomButton>
+        <button type="submit" onClick={this.handleSubmit}>
+          LOGOUT
+        </button>
       </div>
     );
   }
