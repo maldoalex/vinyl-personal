@@ -16,6 +16,24 @@ const LOGOUT = "LOGOUT";
 const GET_USER_DATA = "GET_USER_DATA";
 const USER_LOGGED_IN = "USER_LOGGED_IN";
 const USER_LOGGED_OUT = "USER_LOGGED_OUT";
+const UPDATE_USER = "UPDATE_USER";
+
+export function updateUser(
+  first_name,
+  last_name,
+  display_name,
+  email,
+  password
+) {
+  let data = axios.put("/auth/updateUser", {
+    first_name,
+    last_name,
+    display_name,
+    email,
+    password
+  });
+  return { type: UPDATE_USER, payload: data };
+}
 
 export function userLoggedIn(authenticated) {
   return { type: USER_LOGGED_IN, payload: authenticated };
@@ -71,6 +89,12 @@ function reducer(state = initialState, action) {
         ...state,
         email: action.payload.user.email,
         id: action.payload.user.id,
+        error: ""
+      };
+    case `${UPDATE_USER}`:
+      return {
+        ...state,
+        user: payload.data,
         error: ""
       };
     case `${USER_LOGGED_IN}`:

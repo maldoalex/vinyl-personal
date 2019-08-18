@@ -46,6 +46,7 @@ app.post("/auth/register", authController.register);
 app.post("/auth/login", authController.login);
 app.get("/auth/logout", authController.logout);
 app.get("/auth/user", authController.getSession);
+app.put("/auth/update/:id", authController.updateUser);
 
 //Cart
 app.get("/api/cart", cartController.getCart);

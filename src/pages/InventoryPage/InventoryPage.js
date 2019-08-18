@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
 import TurntablesAndEquipment from "../../components/TurntablesAndEquipment/TurntablesAndEquipment";
+import "./InventoryPage.scss";
+import ReactPlayer from "react-player";
 
 //Page to request turntables and equipment
 
@@ -29,6 +31,13 @@ class Inventory extends React.Component {
     const { turntables } = this.state;
     return (
       <div className="inventory">
+        <div className="player-wrapper">
+          <ReactPlayer
+            className="react-player"
+            url="https://www.youtube.com/watch?v=8_Qo4qCDgyk"
+            playing
+          />
+        </div>
         {turntables.map(item => (
           <TurntablesAndEquipment key={item.id} item={item} />
         ))}

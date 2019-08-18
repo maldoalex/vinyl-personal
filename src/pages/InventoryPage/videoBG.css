@@ -1,0 +1,10 @@
+body {
+ background-color: azure;
+ font-family: "Montserrat";
+ padding: 3em;
+}
+
+#v0 {
+ position: fixed;
+ width: 100%;
+}

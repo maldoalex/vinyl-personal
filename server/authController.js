@@ -34,7 +34,7 @@ module.exports = {
     const { email, password } = req.body;
     const matchUser = await req.app.get("db").get_user([email]);
     const user = matchUser[0];
-    console.log(user);
+    // console.log(user);
     if (!user) {
       return res
         .status(401)
@@ -48,11 +48,15 @@ module.exports = {
     return res.json(req.session.user);
   },
   logout: (req, res) => {
-    console.log("hit");
+    // console.log("hit");add
     req.session.destroy();
     // req.session.cart.destroy();
     // res.redirect("/login");
     return res.sendStatus(200);
+  },
+  updateUser: (req, res) => {
+    const { first_name, last_name, display_name, email, password } = req.body;
+    res.json(req.session.user);
   },
   getSession: (req, res) => {
     const { user } = req.session;
