@@ -105,6 +105,12 @@ const stripe = require("stripe")(STRIPE_SECRET_KEY);
 
 app.use(express.json());
 
+app.use(express.static(`${__dirname}/../build`));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../build/index.html"));
+});
+
 // Static folder
 // app.use("/public", express.static(path.join(__dirname, "public")));
 
