@@ -54,9 +54,27 @@ module.exports = {
     // res.redirect("/login");
     return res.sendStatus(200);
   },
-  updateUser: (req, res) => {
-    const { first_name, last_name, display_name, email, password } = req.body;
-    res.json(req.session.user);
+  updateUser: async (req, res) => {
+    console.log(req.body);
+    const { id } = req.session.user;
+    const { first_name, last_name, display_name } = req.body;
+    // res.json(req.session.user);
+    const db = req.app.get("db");
+    await db
+      .update_user([id, first_name, last_name, display_name])
+      .catch(err => {
+        console.log(err);
+      });
+    let user = await db.get_user_update([id]).catch(err => {
+      console.log(err);
+    });
+    console.log(user);
+    req.session.user = {
+      ...user[0]
+    };
+    // delete req.session.user.password;
+    console.log(req.session.user);
+    res.status(200).json(req.session.user);
   },
   getSession: (req, res) => {
     const { user } = req.session;

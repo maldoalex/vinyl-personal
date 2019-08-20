@@ -20,15 +20,14 @@ class UpdateUser extends React.Component {
 
   //use axios to place data in users table in respective columns
   updateUser() {
-    const { first_name, last_name, display_name, email, password } = this.state;
+    const { first_name, last_name, display_name, email } = this.state;
     console.log("hit");
     axios
       .put("/auth/update", {
         first_name,
         last_name,
         display_name,
-        email,
-        password
+        email
       })
       .then(() => {
         console.log("registered");
@@ -36,18 +35,17 @@ class UpdateUser extends React.Component {
           first_name: "",
           last_name: "",
           display_name: "",
-          email: "",
-          password: ""
+          email: ""
         });
       })
       .catch(err => {
-        this.setState({
-          first_name: "",
-          last_name: "",
-          display_name: "",
-          email: "",
-          password: ""
-        });
+        // this.setState({
+        //   first_name: "",
+        //   last_name: "",
+        //   display_name: "",
+        //   email: "",
+        //   password: ""
+        // });
         alert("error");
         console.log(err);
       });
@@ -55,7 +53,7 @@ class UpdateUser extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.register();
+    this.updateUser();
     this.setState({
       first_name: "",
       last_name: "",
@@ -76,7 +74,7 @@ class UpdateUser extends React.Component {
     const { first_name, last_name, display_name, email, password } = this.state;
     return (
       <div className="register">
-        <h2 className="title">Create an account</h2>
+        <h2 className="title">Update your account</h2>
         <span>Please fill out form</span>
         <form className="register-form" onSubmit={this.handleSubmit}>
           <input
@@ -91,7 +89,7 @@ class UpdateUser extends React.Component {
             name="last_name"
             type="text"
             value={last_name}
-            onChange={this.handlChange}
+            onChange={this.handleChange}
           />
           <input
             type="text"

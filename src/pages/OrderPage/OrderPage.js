@@ -13,23 +13,23 @@ const OrderPage = ({ cartItems, total, userID }) => {
   }, 0);
   return (
     <div className="order-page">
-      <div className="order-header">
+      {/* <div className="order-header">
         <div className="header-block">
           <span>Product</span>
         </div>
         <div className="header-block">
           <span>Name</span>
         </div>
-        {/* <div className="header-block">
+        <div className="header-block">
           <span>Quantity</span>
-        </div> */}
+        </div>
         <div className="header-block">
           <span>Price</span>
         </div>
         <div className="header-block">
           <span>Remove</span>
         </div>
-      </div>
+      </div> */}
       {cartItems.map(cartItem => (
         <CartItem key={cartItem.id} item={cartItem} />
       ))}

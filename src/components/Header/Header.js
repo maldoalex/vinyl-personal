@@ -47,6 +47,15 @@ class Header extends React.Component {
           />
         </Link>
         <div className="navs">
+          {loggedIn ? (
+            <Link className="nav" to="/update">
+              UPDATE
+            </Link>
+          ) : null}
+
+          <Link className="nav" to="/email">
+            EMAIL
+          </Link>
           <Link className="nav" to="/catalog">
             CATALOG
           </Link>
@@ -59,10 +68,10 @@ class Header extends React.Component {
 
           {loggedIn ? (
             <div className="nav" onClick={this.handleSubmit}>
-              Logout
+              LOGOUT
             </div>
           ) : (
-            <Link className="option" to="/login">
+            <Link className="nav" to="/login">
               {/* <Logout /> */}
               LOGIN
             </Link>

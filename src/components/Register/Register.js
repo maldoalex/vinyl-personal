@@ -89,7 +89,7 @@ class Register extends React.Component {
             name="last_name"
             type="text"
             value={last_name}
-            onChange={this.handlChange}
+            onChange={this.handleChange}
           />
           <input
             type="text"

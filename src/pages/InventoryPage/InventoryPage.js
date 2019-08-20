@@ -2,8 +2,7 @@ import React from "react";
 import axios from "axios";
 import TurntablesAndEquipment from "../../components/TurntablesAndEquipment/TurntablesAndEquipment";
 import "./InventoryPage.scss";
-import ReactPlayer from "react-player";
-
+// import ImageGallery from "react-image-gallery";
 //Page to request turntables and equipment
 
 class Inventory extends React.Component {
@@ -30,20 +29,21 @@ class Inventory extends React.Component {
   render() {
     const { turntables } = this.state;
     return (
-      <div className="inventory">
-        <div className="player-wrapper">
-          <ReactPlayer
-            className="react-player"
-            url="https://www.youtube.com/watch?v=8_Qo4qCDgyk"
-            playing
-          />
+      <div>
+        <div className="inventory">
+          {turntables.map(item => (
+            <TurntablesAndEquipment key={item.id} item={item} />
+          ))}
         </div>
-        {turntables.map(item => (
-          <TurntablesAndEquipment key={item.id} item={item} />
-        ))}
       </div>
     );
   }
 }
 
 export default Inventory;
+
+// return (
+//   <div>
+//     <ImageGallery items={turntables} />
+//   </div>
+// );

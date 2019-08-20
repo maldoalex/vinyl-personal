@@ -6,7 +6,8 @@ import RegisterAndLoginPage from "./pages/RegisterAndLoginPage/RegisterAndLoginP
 import Header from "./components/Header/Header";
 import VinylCatalogPage from "./pages/VinylCatalogPage/VinylCatalogPage";
 import OrderPage from "./pages/OrderPage/OrderPage";
-
+import EmailForm from "./components/EmailForm/EmailForm";
+import UpdateUser from "./components/UpdateUser/UpdateUser";
 import "./App.scss";
 
 //main parent component where children reside, set up routes to different pages
@@ -21,6 +22,8 @@ class App extends React.Component {
           <Route path="/inventory" component={InventoryPage} />
           <Route path="/login" component={RegisterAndLoginPage} />
           <Route path="/order" component={OrderPage} />
+          <Route path="/email" component={EmailForm} />
+          <Route path="/update" component={UpdateUser} />
         </Switch>
       </div>
     );

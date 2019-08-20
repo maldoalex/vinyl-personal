@@ -6,7 +6,7 @@
  flex-direction: column;
  padding: 20px;
  border: 1px solid black;
- background-color: #30648C;
+ background-color: whitesmoke;
  top: 130px;
  right: -240px;
  overflow-x: auto;
@@ -16,7 +16,6 @@
  // -webkit-animation-delay: 2s;
  animation: slide 1.2s forwards;
  // animation-delay: 2s;
-
  // @-webkit-keyframes slide {
  //  100% {
  //   right: 0;
@@ -34,7 +33,15 @@
   display: flex;
   flex-direction: column;
   overflow: scroll;
-  background: brown;
+ }
+
+ .custom-button {
+  // width: 50%;
+  // opacity: 0.5;
+  // position: absolute;
+  // bottom: 100px;
+  // display: none;
+  border-radius: 9px;
  }
 
  button {
