@@ -1,60 +1,10 @@
-// import React from "react";
-// import axios from "axios";
-// import CatalogItem from "../../components/CatalogItem/CatalogItem";
-
-// class VinylCatalogPage extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       albums: [],
-//       searchedAlbums: [],
-//       show: false
-//     };
-//     this.handleClick = this.handleClick.bind(this);
-//   }
-//   handleClick() {
-//     this.setState({ show: !this.state.show });
-//   }
-//   //use axios to get data from api
-//   componentDidMount() {
-//     axios
-//       .get(
-//         "http://ws.audioscrobbler.com/2.0/?method=tag.gettopalbums&tag=1960s&limit=50&api_key=a524b0809a03f493e68a5abff436a312&format=json"
-//       )
-//       .then(response => {
-//         // console.log(response.data.albums.album);
-//         this.setState({
-//           albums: response.data.albums.album
-//         });
-//       })
-//       .catch(error => {
-//         console.log(error);
-//       });
-//   }
-
-//   render() {
-//     // let filteredAlbums = this.state.searchedAlbums.map(album => {
-//     // console.log(this.state.searchedAlbums);
-
-//     return (
-//       <div className="decades">
-//         {this.state.albums.map((album, i) => (
-//           <CatalogItem album={album} key={i} />
-//         ))}
-//       </div>
-//     );
-//     // });
-//   }
-// }
-
-// export default VinylCatalogPage;
-
 import React from "react";
 import axios from "axios";
 import CatalogItem from "../../components/CatalogItem/CatalogItem";
-import { UncontrolledCarousel } from "reactstrap";
 import RightArrow from "../../components/CarouselArrows/RightArrow";
 import LeftArrow from "../../components/CarouselArrows/LeftArrow";
+import Unsplash from "react-unsplash-wrapper";
+
 import "./VinylCatalog.scss";
 
 class VinylCatalogPage extends React.Component {
@@ -76,7 +26,7 @@ class VinylCatalogPage extends React.Component {
   componentDidMount() {
     axios
       .get(
-        "http://ws.audioscrobbler.com/2.0/?method=tag.gettopalbums&tag=1960s&limit=50&api_key=a524b0809a03f493e68a5abff436a312&format=json"
+        "http://ws.audioscrobbler.com/2.0/?method=tag.gettopalbums&tag=1982&limit=50&api_key=a524b0809a03f493e68a5abff436a312&format=json"
       )
       .then(response => {
         // console.log(response.data.albums.album);
@@ -118,9 +68,11 @@ class VinylCatalogPage extends React.Component {
   render() {
     // let filteredAlbums = this.state.searchedAlbums.map(album => {
     // console.log(this.state.searchedAlbums);
-    // const slider = () <UncontrolledCarousel albums={albums}/>
     return (
       <div className="slider">
+        <div className="records-img">
+          <Unsplash width="1500" height="1000" keywords="records, music" />
+        </div>
         <div
           className="slider-wrapper"
           style={{

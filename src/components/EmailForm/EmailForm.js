@@ -2,6 +2,15 @@ import React from "react";
 import { Form, FormGroup, Input, Label, Button } from "reactstrap";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.css";
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  TwitterShareButton,
+  TwitterIcon,
+  WhatsappShareButton,
+  WhatsappIcon,
+  EmailShareButton
+} from "react-share";
 
 class EmailForm extends React.Component {
   constructor() {
@@ -42,6 +51,30 @@ class EmailForm extends React.Component {
           <Input type="textarea" name="message" onChange={this.handleChange} />
         </FormGroup>
         <Button>submit</Button>
+        <div>
+          <TwitterShareButton
+            children={
+              <TwitterIcon
+                size={70}
+                round={true}
+                // title={`Special at ${
+                //   this.state.ad.business_name
+                //   }, let grab a drink`}
+              />
+            }
+            // url={`/adPage/${id}`}
+          />
+        </div>
+        <div>
+          <FacebookShareButton
+            children={<FacebookIcon size={70} round={true} />}
+          />
+        </div>
+        <div>
+          <WhatsappShareButton
+            children={<WhatsappIcon size={70} round={true} />}
+          />
+        </div>
       </Form>
     );
   }

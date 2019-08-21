@@ -8,7 +8,6 @@ module.exports = {
   addToCart: async (req, res) => {
     const { item } = req.body;
     req.session.cart = [item, ...req.session.cart];
-    // console.log(req.session.cart);
     res.status(200).json(req.session.cart);
   },
   getCart: (req, res) => {

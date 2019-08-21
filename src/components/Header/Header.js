@@ -8,25 +8,18 @@ import { userLoggedIn, userLoggedOut } from "../../redux/user/userReducer";
 
 import "./Header.scss";
 
-// const Header = props => (
 class Header extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  // }
   async componentDidMount() {
     let res = await axios.get("/auth/user");
-    // console.log(res);
     if (res.data.loggedIn) this.setState({ authenticated: true });
     this.props.userLoggedIn(res.data.loggedIn);
   }
 
   logout = () => {
-    // console.log("hit");
     axios
       .get("/auth/logout")
       .then(res => {
         this.props.userLoggedOut();
-        // console.log(res);
       })
       .catch(err => console.log(err));
   };
@@ -72,7 +65,6 @@ class Header extends React.Component {
             </div>
           ) : (
             <Link className="nav" to="/login">
-              {/* <Logout /> */}
               LOGIN
             </Link>
           )}

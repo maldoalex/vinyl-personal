@@ -2,7 +2,6 @@ import React from "react";
 import axios from "axios";
 import TurntablesAndEquipment from "../../components/TurntablesAndEquipment/TurntablesAndEquipment";
 import "./InventoryPage.scss";
-// import ImageGallery from "react-image-gallery";
 //Page to request turntables and equipment
 
 class Inventory extends React.Component {
@@ -28,8 +27,9 @@ class Inventory extends React.Component {
 
   render() {
     const { turntables } = this.state;
+    console.log(turntables);
     return (
-      <div>
+      <div classname="wrapper">
         <div className="inventory">
           {turntables.map(item => (
             <TurntablesAndEquipment key={item.id} item={item} />
@@ -41,9 +41,3 @@ class Inventory extends React.Component {
 }
 
 export default Inventory;
-
-// return (
-//   <div>
-//     <ImageGallery items={turntables} />
-//   </div>
-// );

@@ -39,13 +39,6 @@ class UpdateUser extends React.Component {
         });
       })
       .catch(err => {
-        // this.setState({
-        //   first_name: "",
-        //   last_name: "",
-        //   display_name: "",
-        //   email: "",
-        //   password: ""
-        // });
         alert("error");
         console.log(err);
       });

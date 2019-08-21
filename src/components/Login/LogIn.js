@@ -19,13 +19,6 @@ class LogIn extends React.Component {
     this.login = this.login.bind(this);
   }
 
-  // async componentDidMount() {
-  //   let res = await axios.get("/auth/user");
-  //   console.log(res);
-  //   if (res.data.loggedIn) this.setState({ authenticated: true });
-  //   this.props.userLoggedIn(res.data.loggedIn);
-  // }
-
   //use axios to get data from users table
   async login(e) {
     const { email, password } = this.state;
@@ -35,13 +28,7 @@ class LogIn extends React.Component {
     //check for true/false and store in redux
     if (res.data.loggedIn) this.setState({ authenticated: true });
     this.props.userLoggedIn(res.data.loggedIn);
-    // this.setState({ email: "", password: "" });
-    // alert(`welcome ${email}`);
   }
-
-  //set sesion received int o redux state
-
-  //show logout based on id
 
   handleSubmit = event => {
     event.preventDefault();

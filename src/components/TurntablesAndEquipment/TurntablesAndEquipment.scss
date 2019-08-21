@@ -32,9 +32,9 @@
  }
 
  &:hover {
-  .image {
-   opacity: 0.6;
-  }
+  // .image {
+  //  opacity: 0.6;
+  // }
 
   .custom-button {
    opacity: 0.8;
@@ -52,10 +52,12 @@
   .name {
    width: 90%;
    margin-bottom: 15px;
+   color: red;
   }
 
   .price {
    width: 10%;
+   color: red;
   }
  }
 }

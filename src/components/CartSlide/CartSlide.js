@@ -10,9 +10,6 @@ import "./CartSlide.scss";
 //create a cart component that slides in from right when icon is clicked
 //map through cart items and send to CartItem component
 
-// ({ cartItems, history, dispatch })
-
-//make into class component on componentdidmoutn run getitems
 class CartSlide extends React.Component {
   constructor(props) {
     super(props);

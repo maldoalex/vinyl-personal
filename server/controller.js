@@ -24,7 +24,7 @@ module.exports = {
 
   getAllHardware: (req, res, next) => {
     const dbInstance = req.app.get("db");
-
+    console.log("hit");
     dbInstance
       .get_all_hardware()
       .then(hardware => res.status(200).send(hardware))

@@ -34,7 +34,6 @@ module.exports = {
     const { email, password } = req.body;
     const matchUser = await req.app.get("db").get_user([email]);
     const user = matchUser[0];
-    // console.log(user);
     if (!user) {
       return res
         .status(401)
@@ -48,10 +47,7 @@ module.exports = {
     return res.json(req.session.user);
   },
   logout: (req, res) => {
-    // console.log("hit");add
     req.session.destroy();
-    // req.session.cart.destroy();
-    // res.redirect("/login");
     return res.sendStatus(200);
   },
   updateUser: async (req, res) => {
@@ -72,7 +68,6 @@ module.exports = {
     req.session.user = {
       ...user[0]
     };
-    // delete req.session.user.password;
     console.log(req.session.user);
     res.status(200).json(req.session.user);
   },

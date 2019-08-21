@@ -40,7 +40,8 @@ class HomepageMenu extends React.Component {
         },
         {
           title: "MEMBERS",
-          image: "",
+          image:
+            "https://images.unsplash.com/photo-1483412033650-1015ddeb83d1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
           size: "large",
           id: 5,
           page: ""
