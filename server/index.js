@@ -47,14 +47,14 @@ app.post("/api/form", (req, res) => {
     <h3>Contact Details</h3>
     <ul>  
       <li>Name: ${req.body.name}</li>
-      <li>Email: ${req.body.email}</li>
+      <li>Email: "recordshop@gmail.com"</li>
     </ul>
     <h3>Message</h3>
     <p>${req.body.message}</p>
   `;
 
     let mailOptions = {
-      from: "alexmdevmtn@gmail.com", // sender address
+      from: "recordshop@gmail.com", // sender address
       to: "alexmdevmtn@gmail.com", // list of receivers
       subject: "nodemailer email test", // Subject line
       text: req.body.message, // plain text body

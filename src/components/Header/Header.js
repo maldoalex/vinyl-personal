@@ -46,15 +46,15 @@ class Header extends React.Component {
             </Link>
           ) : null}
 
-          <Link className="nav" to="/email">
-            EMAIL
-          </Link>
+          {/* <Link className="nav" to="/email">
+            CONTACT
+          </Link> */}
           <Link className="nav" to="/catalog">
             CATALOG
           </Link>
-          <Link className="nav" to="/inventory">
+          {/* <Link className="nav" to="/inventory">
             RENT
-          </Link>
+          </Link> */}
           <Link className="nav" to="/order">
             CHECKOUT
           </Link>

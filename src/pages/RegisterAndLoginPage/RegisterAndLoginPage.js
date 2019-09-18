@@ -1,8 +1,8 @@
 import React from "react";
-// import LogOut from "../../components/LogOut/LogOut";
+import LogOut from "../../components/LogOut/LogOut";
 import LogIn from "../../components/Login/LogIn";
 import Register from "../../components/Register/Register";
-import UpdateUser from "../../components/UpdateUser/UpdateUser";
+// import UpdateUser from "../../components/UpdateUser/UpdateUser";
 import vinyl from "../../assets/vinyl.mp4";
 import "./RegisterAndLoginPage.scss";
 
@@ -15,7 +15,7 @@ const RegisterAndLoginPage = () => (
     <div className="reg-login">
       <LogIn />
       <Register />
-      {/* <LogOut /> */}
+      <LogOut />
       {/* <UpdateUser /> */}
     </div>
   </div>

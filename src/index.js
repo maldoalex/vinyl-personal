@@ -14,9 +14,7 @@ import * as serviceWorker from "./serviceWorker";
 ReactDOM.render(
   <Provider store={store}>
     <HashRouter>
-      {/* <PersistGate persistor={persistor}> */}
       <App />
-      {/* </PersistGate> */}
     </HashRouter>
   </Provider>,
   document.getElementById("root")

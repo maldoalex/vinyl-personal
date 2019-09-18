@@ -101,3 +101,18 @@
 .fa-arrow-left:before {
  color: #222
 }
+
+@media (max-width: 1126px) {
+
+ .records-img {
+  // display: flex;
+  // flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 20vh;
+  margin-top: 70px;
+  max-width: 20vw;
+  margin: 0;
+  padding: 0;
+ }
+}
